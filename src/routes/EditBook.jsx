@@ -50,7 +50,7 @@ function EditBook() {
   const [fileReady3, setFileReady3] = useState(0)
   const [fileReady4, setFileReady4] = useState(0)
   const [fileReady5, setFileReady5] = useState(0)
-
+  const tokenTMP = "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AA"
   let fileReady = [setFileReady1, setFileReady2, setFileReady3, setFileReady4, setFileReady5]
   let images = [BookImage1, BookImage2, BookImage3]
   let upStatus = [setIsUpload1, setIsUpload2, setIsUpload3]
@@ -145,7 +145,7 @@ function EditBook() {
       const repoName = "ebook_photos";
       const filePath = `${id + 1 + file.name}`; // Upload directly to the root directory
       const branch = "main"; // Change branch if needed
-      const token = localStorage.getItem("token").slice(0,-2);
+      const token = tokenTMP.slice(0,-2);
 
       const url = `https://api.github.com/repos/${githubUsername}/${repoName}/contents/${filePath}`;
 
@@ -263,7 +263,7 @@ function EditBook() {
       const repoName = "ebook_photos";
       const filePath = `${id + file.name}`; // Store PDFs in a separate folder
       const branch = "main"; // Change branch if needed
-      const token = localStorage.getItem("token").slice(0,-2);
+      const token = tokenTMP.slice(0,-2);
 
       const url = `https://api.github.com/repos/${githubUsername}/${repoName}/contents/${filePath}`;
 
