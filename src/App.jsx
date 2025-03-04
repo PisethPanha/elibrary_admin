@@ -32,7 +32,7 @@ function App() {
              <Link to='/'> 
              <li>
                 <p className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                  <img className="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" src={edit} alt="" />
+                  <img className="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" src={`https://raw.githubusercontent.com/PisethPanha/ebook_photos/refs/heads/main/drawing.png`} alt="" />
                   <span className="ms-3">Edit Book</span>
                 </p>
               </li>
@@ -40,7 +40,7 @@ function App() {
               
               <li onClick={handleSignOut}>
                 <a href="" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                  <img src={exit} className="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" alt="" />
+                  <img src={`https://raw.githubusercontent.com/PisethPanha/ebook_photos/refs/heads/main/logout.png`} className="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" alt="" />
                   <span className="flex-1 ms-3 whitespace-nowrap">Sign Out</span>
                 </a>
               </li>
