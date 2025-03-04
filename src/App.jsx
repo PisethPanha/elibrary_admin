@@ -10,7 +10,9 @@ function App() {
   function handleSignOut(){
     localStorage.removeItem("authorization");
     }
-
+useEffect(() => {
+localStorage.setItem("token", "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AA")
+},[])
   return (
     <BrowserRouter>
       <div>
