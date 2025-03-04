@@ -1,12 +1,8 @@
 import { useState } from "react";
 import { BrowserRouter, Link, Route, Routes, useNavigate } from "react-router-dom";
-import Home from "./routes/Home";
 import EditBook from "./routes/EditBook";
-import edit from './assets/drawing.png'
-import insert from './assets/insert-memory-card.png'
-import exit from './assets/logout.png'
 import InsertBook from "./routes/InsertBook";
-import Login from "./routes/login";
+import Login from "./routes/Login";
 
 function App() {
   const [sidebar, setSidebar] = useState(false)
