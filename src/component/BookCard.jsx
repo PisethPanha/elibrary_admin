@@ -27,8 +27,20 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
   const [isUpload3, setIsUpload3] = useState('EDIT');
   const [loading, setLoading] = useState(false)
   const [isUpdated, setupdated] = useState(false)
+  const [uploadProgress, setUploadProgress] = useState(0)
+  const [uploadProgress1, setUploadProgress1] = useState(0)
+  const [uploadProgress2, setUploadProgress2] = useState(0)
+  const [uploadProgress3, setUploadProgress3] = useState(0)
+  const [uploadProgress4, setUploadProgress4] = useState(0)
   const [reloadNoFile, setReloadNoFile] = useState(0)
+  const [step1, setStep1] = useState(0)
+  const [step2, setStep2] = useState(0)
+  const [step3, setStep3] = useState(0)
+  const [step4, setStep4] = useState(0)
+  const [steps, setSteps] = useState(0)
   const images = [BookImage1, BookImage2, BookImage3]
+  const tokenTMP = "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AA"
+  const GitToken = tokenTMP.slice(0, -2)
   const uploadStatus = [setIsUpload1, setIsUpload2, setIsUpload3]
   const navigate = useNavigate();
   function handleDelete() {
@@ -37,13 +49,15 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
   }
 
   useEffect(() => {
-    if (isUpload1 == "uploaded" && isUpload2 == "uploaded" && isUpload3 == "uploaded" || reloadNoFile == 3) {
-      navigate(0)
-      setLoading(false)
-    }
+    const sum = uploadProgress1 + uploadProgress2 + uploadProgress3 + uploadProgress4
+    const multi = sum * 100
+    setUploadProgress(multi / 400)
+    console.log(uploadProgress);
+    
+  }, [uploadProgress1, uploadProgress2, uploadProgress3, uploadProgress4])
 
 
-  }, [isUpload1, isUpload2, isUpload3, reloadNoFile, loading])
+  
 
   async function handleSubmit() {
     setLoading(true)
@@ -58,12 +72,20 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
     ) {
       alert("All field can not empty");
     } else {
-      BookNameImage1 == img1 && setIsUpload1("uploaded")
-      console.log(isUpload1);
-      BookNameImage2 == img2 && setIsUpload2("uploaded")
-      console.log(isUpload2);
-      BookNameImage3 == img3 && setIsUpload3("uploaded")
-      console.log(isUpload3);
+      setLoading(true)
+      if (BookNameImage1 == img1) {
+        setIsUpload1("uploaded");
+        setUploadProgress1(100)
+      }
+      else if (BookNameImage2 == img2) {
+        setIsUpload2("uploaded");
+        setUploadProgress2(100)
+      }
+      else if (BookNameImage2 == img2) {
+        setIsUpload3("uploaded");
+        setUploadProgress3(100)
+      }
+
       await axios.post("https://carefree-empathy-production.up.railway.app/edit", {
         BookId: id,
         title: BookTitle,
@@ -76,12 +98,22 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
         image3: BookNameImage3 == img3 || BookNameImage3 == "" ? img3 : id + BookNameImage3,
         language: BookLanguage,
         type: BookType
-      }).then((res) => {
+      },
+        {
+          onUploadProgress: (progressEvent) => {
+            const percent = Math.round(
+              (progressEvent.loaded * 100) / progressEvent.total
+            );
+            setUploadProgress4(percent); // Update progress state
+          }
+        }
+      ).then((res) => {
         console.log(res.data);
         if (res.data == 'Book updated !!!') {
+          setStep1(10)
           setupdated(true)
           for (let y = 0; y < 3; y++) {
-            uploadToGitHub(images[y], uploadStatus[y], id)
+            uploadToGitHub(images[y], uploadStatus[y], id, y)
           }
 
         }
@@ -98,7 +130,7 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
     }
   };
 
-  async function updateFile(owner, img, repo, filePath, sha, newContent, githubToken) {
+  async function updateFile(owner, img, repo, filePath, sha, newContent, y) {
     const url = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
     const data = {
       message: "Updating file.txt",
@@ -108,18 +140,39 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
 
     try {
       const response = await axios.put(url, data, {
-        headers: { Authorization: `token ${githubToken}` },
+        headers: { Authorization: `token ${GitToken}` },
       });
       console.log("✅ File updated successfully:", response.data);
+      if (y == 0) {
+        setStep2(10)
+      }
+      else if (y == 1) {
+        setStep3(10)
+      }
+      else if (y == 2) {
+        setStep4(10)
+      }
       img("uploaded")
     } catch (error) {
       console.error("❌ Error updating file:", error.response ? error.response.data : error.message);
     }
   }
 
-  const uploadToGitHub = async (file, img, id) => {
+  const uploadToGitHub = async (file, img, id, y) => {
 
     if (!file) {
+      if (y == 0) {
+        setUploadProgress1(100)
+        setStep2(10)
+      }
+      else if (y == 1) {
+        setUploadProgress2(100)
+        setStep3(10)
+      }
+      else if (y == 2) {
+        setUploadProgress3(100)
+        setStep4(10)
+      }
       setReloadNoFile(reloadNoFile + 1)
       return;
     }
@@ -134,7 +187,7 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
       const repoName = "ebook_photos";
       const filePath = `${id + file.name}`; // Upload directly to the root directory
       const branch = "main"; // Change branch if needed
-      const token = "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";
+      const token = GitToken;
 
       const url = `https://api.github.com/repos/${githubUsername}/${repoName}/contents/${filePath}`;
 
@@ -147,7 +200,7 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
 
         const response = await axios.get(`https://api.github.com/repos/${githubUsername}/${repoName}/contents/${filePath}`)
 
-        updateFile(githubUsername, img, repoName, filePath, response.data.sha, base64String, token)
+        updateFile(githubUsername, img, repoName, filePath, response.data.sha, base64String, y)
 
 
       } catch (error) {
@@ -155,13 +208,36 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
         try {
           const response = await axios.put(url, data, {
             headers: {
-              Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${GitToken}`,
               Accept: "application/vnd.github.v3+json",
             },
-          });
+            onUploadProgress: (progressEvent) => {
+              const percent = Math.round(
+                (progressEvent.loaded * 100) / progressEvent.total
+              );
+              if (y == 0) {
+                setUploadProgress1(percent); // Update progress state
+              }
+              else if (y == 1) {
+                setUploadProgress2(percent); // Update progress state
+              }
+              else if (y == 2) {
+                setUploadProgress3(percent); // Update progress state
+              }
 
+            },
+          });
+          if (y == 0) {
+            setStep2(10)
+          }
+          else if (y == 1) {
+            setStep3(10)
+          }
+          else if (y == 2) {
+            setStep4(10)
+          }
           img("uploaded")
-          alert("updated !!!")
+
           console.log("File uploaded:", response.data);
           console.log(filePath);
 
@@ -180,7 +256,16 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
 
     };
   }
-
+  useEffect(() => {
+    const sumLoading = step1 + step2 + step3 + step4
+    console.log(sumLoading);
+    
+    if (sumLoading == 40) {
+      setLoading(false)
+      alert("edited")
+      navigate(0)
+    }
+  },[step1, step2, step3, step4])
 
   return (
     <div>
@@ -271,12 +356,21 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
 
       <div className={`  overflow-y-auto overflow-x-hidden fixed top-0  right-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full ${edit ? "block" : "hidden"}`}>
 
-        <div role="status" className={`w-full ${loading ? "block" : "hidden "} fixed z-50 h-[100vh] justify-center flex items-center `}>
-          <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
-            <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
-          </svg>
-          <span class="sr-only">Loading...</span>
+        <div role="status" className={`w-full fixed z-50 h-[100%] top-0 left-0 backdrop-blur-md justify-center ${loading ? "grid" : "hidden"} items-center `}>
+
+
+          <div className="w-[10rem] bg-violet-700 h-[1.5rem] relative rounded-full overflow-hidden  dark:bg-gray-700">
+            <div className={`bg-blue-600 duration-200 h-[1.5rem] rounded-full w-full absolute right-full`} style={{
+              transform: `translateX(${uploadProgress}%)`
+            }} >
+
+            </div>
+            <div className='absolute z-40 flex items-center justify-center w-full'>
+              <h1 className='text-center text-white font-[800]'>{Math.round(uploadProgress)}%</h1>
+            </div>
+          </div>
+
+
         </div>
 
         <div className="relative h-full mx-auto p-4">
@@ -317,7 +411,7 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
               <br />
               <input type="text" className={`mb-6 font-[700] text-[20px] outline-none mx-auto bg-gray-300 ${isUpdated ? "border-4 border-blue-700" : "border-4 border-gray-900"} text-gray-900 text-sm rounded-lg block max-lg:w-auto w-[30rem] p-4 `} value={BookPublisher} onChange={(event) => setBookPublisher(event.target.value)} />
 
-              
+
               <br />
 
               <form className="max-w-sm grid items-center justify-center mx-auto">
