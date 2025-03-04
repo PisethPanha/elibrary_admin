@@ -38,6 +38,7 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
   const [step3, setStep3] = useState(0)
   const [step4, setStep4] = useState(0)
   const [steps, setSteps] = useState(0)
+  const [reading, setReading] = useState(false)
   const images = [BookImage1, BookImage2, BookImage3]
   const tokenTMP = "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AA"
   const GitToken = tokenTMP.slice(0, -2)
@@ -53,11 +54,11 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
     const multi = sum * 100
     setUploadProgress(multi / 400)
     console.log(uploadProgress);
-    
+
   }, [uploadProgress1, uploadProgress2, uploadProgress3, uploadProgress4])
 
 
-  
+
 
   async function handleSubmit() {
     setLoading(true)
@@ -259,13 +260,13 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
   useEffect(() => {
     const sumLoading = step1 + step2 + step3 + step4
     console.log(sumLoading);
-    
+
     if (sumLoading == 40) {
       setLoading(false)
       alert("edited")
       navigate(0)
     }
-  },[step1, step2, step3, step4])
+  }, [step1, step2, step3, step4])
 
   return (
     <div>
@@ -340,10 +341,36 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
               </div>
             </div>
             <div>
-              <div className=" flex justify-center items-center p-4 md:p-5 border-t border-gray-200 rounded-b">
+              <div className=" flex justify-center gap-4 items-center p-4 md:p-5 border-t border-gray-200 rounded-b">
                 <button data-modal-hide="default-modal" type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Download</button>
-                <a target='blank' href={`https://carefree-empathy-production.up.railway.app/pdf/${read}`} onClick={() => setDialog(!dialog)} data-modal-hide="default-modal" type="a href=''" className="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none rounded-lg border border-gray-200 hover:bg-blue-600  dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 bg-blue-700 dark:hover:text-white dark:hover:bg-gray-700"><button className=' text-white duration-150'>Read</button></a>
+                <button onClick={() => setReading(true)} data-modal-hide="default-modal" type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Read</button>
+                {/* <a target='blank' href={`https://carefree-empathy-production.up.railway.app/pdf/${read}`} onClick={() => setDialog(!dialog)} data-modal-hide="default-modal" type="a href=''" className="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none rounded-lg border border-gray-200 hover:bg-blue-600  dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 bg-blue-700 dark:hover:text-white dark:hover:bg-gray-700"><button className=' text-white duration-150'>Read</button></a> */}
               </div>
+            </div>
+          </div>
+        </div>
+        <div className={`w-full h-full absolute top-0 flex justify-center items-center z-50 ${imgZoom ? "block" : "hidden"}`}>
+          <img src={`https://raw.githubusercontent.com/PisethPanha/ebook_photos/refs/heads/main/${imgWillZoom}`} alt="" className='border-4 border-gray-600 max-w-[50rem] max-h-[30rem]' />
+          <div onClick={() => setImgZoom(!imgZoom)} className='w-full -z-10 h-full absolute top-0 flex justify-center items-center '></div>
+        </div>
+
+      </div>
+
+      <div className={`  overflow-y-auto overflow-x-hidden fixed top-0  right-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full ${reading ? "block" : "hidden"}`}>
+        <div className="relative h-full mx-auto p-4">
+
+          <div className="relative overflow-y-scroll border-2 border-gray-900 h-full bg-white rounded-lg shadow-sm ">
+            <button type="button" onClick={() => setReading(!reading)} className="fixed top-24 max-md:top-10 max-md:right-8 bg-slate-200 bg-opacity-50 right-16 text-gray-900  bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
+              <svg className="w-6 h-6 max-md:w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+              </svg>
+              <span className="sr-only">Close modal</span>
+            </button>
+            <div className='w-full h-full'>
+              <object data={`https://carefree-empathy-production.up.railway.app/pdf/${read}`} type="application/pdf" width="100%" height="100%">
+                <p>It appears you don't have a PDF plugin for this browser. You can <a href="https://yourserver.com/path-to-file.pdf" target="_blank">click here to download the PDF file.</a></p>
+              </object>
+
             </div>
           </div>
         </div>
