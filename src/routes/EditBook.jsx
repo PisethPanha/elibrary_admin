@@ -145,7 +145,7 @@ function EditBook() {
       const repoName = "ebook_photos";
       const filePath = `${id + 1 + file.name}`; // Upload directly to the root directory
       const branch = "main"; // Change branch if needed
-      const token = "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";
+      const token = localStorage.getItem("token").slice(0,-2);
 
       const url = `https://api.github.com/repos/${githubUsername}/${repoName}/contents/${filePath}`;
 
@@ -263,7 +263,7 @@ function EditBook() {
       const repoName = "ebook_photos";
       const filePath = `${id + file.name}`; // Store PDFs in a separate folder
       const branch = "main"; // Change branch if needed
-      const token = "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";
+      const token = localStorage.getItem("token").slice(0,-2);
 
       const url = `https://api.github.com/repos/${githubUsername}/${repoName}/contents/${filePath}`;
 
