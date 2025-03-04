@@ -367,9 +367,7 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
               <span className="sr-only">Close modal</span>
             </button>
             <div className='w-full h-full'>
-              <object data={`https://carefree-empathy-production.up.railway.app/pdf/${read}`} type="application/pdf" width="100%" height="100%">
-                <p>It appears you don't have a PDF plugin for this browser. You can <a href="https://yourserver.com/path-to-file.pdf" target="_blank">click here to download the PDF file.</a></p>
-              </object>
+            <iframe src={`https://drive.google.com/viewerng/viewer?embedded=true&url=https://carefree-empathy-production.up.railway.app/pdf/${read}`} width="100%" height="100%"></iframe>
 
             </div>
           </div>
