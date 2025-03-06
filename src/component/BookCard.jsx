@@ -275,7 +275,7 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
           <img className="rounded-t-lg mx-auto w-full h-[20rem]" src={`https://raw.githubusercontent.com/PisethPanha/ebook_photos/refs/heads/main/${img}`} alt="" />
         </p>
         <div className="p-5 gap-2 grid text-center">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{title}</h5>
+          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">{title}</h5>
           <p className="mb-3 font-normal text-gray-700 ">view: {view} <br /> download: {download}</p>
           <p onClick={() => setDialog(!dialog)}
             className=" text-center cursor-pointer w-[10rem] mx-auto items-center px-3 py-2 text-sm font-medium  text-white bg-blue-700 rounded-lg hover:bg-blue-800 outline-none">
@@ -283,13 +283,13 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
 
           </p>
           <p onClick={() => setEdit(!edit)}
-            className="w-[10rem] mx-auto cursor-pointer items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            className="w-[10rem] mx-auto cursor-pointer items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
             Edit
 
           </p>
 
           <p onClick={handleDelete}
-            className="w-[10rem] mx-auto cursor-pointer items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            className="w-[10rem] mx-auto cursor-pointer items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
             Delete
 
           </p>
@@ -304,10 +304,10 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
           <div className="relative overflow-y-scroll border-2 border-gray-900 h-full bg-white rounded-lg shadow-sm ">
 
             <div className=" flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
-              <h3 className=" text-xl font-semibold text-gray-900 dark:text-white">
+              <h3 className=" text-xl font-semibold text-gray-900">
                 Book details
               </h3>
-              <button type="button" onClick={() => setDialog(!dialog)} className="fixed right-16 text-gray-400  bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
+              <button type="button" onClick={() => setDialog(!dialog)} className="fixed right-16 text-gray-400  bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="default-modal">
                 <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                   <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                 </svg>
@@ -342,9 +342,9 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
             </div>
             <div>
               <div className=" flex justify-center gap-4 items-center p-4 md:p-5 border-t border-gray-200 rounded-b">
-                <button data-modal-hide="default-modal" type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Download</button>
-                <button onClick={() => setReading(true)} data-modal-hide="default-modal" type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Read</button>
-                {/* <a target='blank' href={`https://carefree-empathy-production.up.railway.app/pdf/${read}`} onClick={() => setDialog(!dialog)} data-modal-hide="default-modal" type="a href=''" className="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none rounded-lg border border-gray-200 hover:bg-blue-600  dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 bg-blue-700 dark:hover:text-white dark:hover:bg-gray-700"><button className=' text-white duration-150'>Read</button></a> */}
+                <button data-modal-hide="default-modal" type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Download</button>
+                {/* <button onClick={() => setReading(true)} data-modal-hide="default-modal" type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Read</button> */}
+                <a target='blank' href={`https://drive.google.com/viewerng/viewer?embedded=true&url=https://raw.githubusercontent.com/PisethPanha/ebook_photos/refs/heads/main/${read}`} onClick={() => setDialog(!dialog)} data-modal-hide="default-modal" type="a href=''" className="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none rounded-lg border border-gray-200 hover:bg-blue-600  bg-blue-700 "><button className=' text-white duration-150'>Read</button></a>
               </div>
             </div>
           </div>
@@ -360,7 +360,7 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
         <div className="relative h-full mx-auto p-4">
 
           <div className="relative overflow-y-scroll border-2 border-gray-900 h-full bg-white rounded-lg shadow-sm ">
-            <button type="button" onClick={() => setReading(!reading)} className="fixed top-24 max-md:top-10 max-md:right-8 bg-slate-200 bg-opacity-50 right-16 text-gray-900  bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
+            <button type="button" onClick={() => setReading(!reading)} className="fixed top-24 max-md:top-10 max-md:right-8 bg-slate-200 bg-opacity-50 right-16 text-gray-900  bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center " data-modal-hide="default-modal">
               <svg className="w-6 h-6 max-md:w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
               </svg>
@@ -384,7 +384,7 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
         <div role="status" className={`w-full fixed z-50 h-[100%] top-0 left-0 backdrop-blur-md justify-center ${loading ? "grid" : "hidden"} items-center `}>
 
 
-          <div className="w-[10rem] bg-violet-700 h-[1.5rem] relative rounded-full overflow-hidden  dark:bg-gray-700">
+          <div className="w-[10rem] bg-violet-700 h-[1.5rem] relative rounded-full overflow-hidden">
             <div className={`bg-blue-600 duration-200 h-[1.5rem] rounded-full w-full absolute right-full`} style={{
               transform: `translateX(${uploadProgress}%)`
             }} >
@@ -401,10 +401,10 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
         <div className="relative h-full mx-auto p-4">
           <div className="relative overflow-y-scroll border-2 border-gray-900 h-full bg-white rounded-lg shadow-sm ">
             <div className=" flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
-              <h3 className=" text-xl  font-semibold text-gray-900 dark:text-white">
+              <h3 className=" text-xl  font-semibold text-gray-900 ">
                 Edit Book
               </h3>
-              <button type="button" onClick={() => { setEdit(!edit); navigate(0) }} className="fixed right-16 text-gray-400  bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
+              <button type="button" onClick={() => { setEdit(!edit); navigate(0) }} className="fixed right-16 text-gray-400  bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center " data-modal-hide="default-modal">
                 <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                   <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                 </svg>
@@ -412,7 +412,7 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
               </button>
             </div>
             <div className=" grid items-center justify-center p-4 md:p-5 border-b rounded-t border-gray-200">
-              <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900 dark:text-white">
+              <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900 ">
                 Title
               </h3>
               <br />
@@ -420,17 +420,17 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
 
               <input type="text" className={`mb-6 font-[700] text-[20px] ${isUpdated ? "border-4 border-blue-700" : "border-4 border-gray-900"} outline-none mx-auto bg-gray-300  text-gray-900 text-sm rounded-lg block max-lg:w-auto w-[30rem] p-4 `} value={BookTitle} onChange={(event) => setBookTitle(event.target.value)} />
 
-              <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900 dark:text-white">
+              <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900">
                 Link To downlod
               </h3>
               <br />
               <input type="text" disabled className={`mb-6 font-[700] text-[20px] outline-none mx-auto bg-gray-300 ${isUpdated ? "border-4 border-blue-700" : "border-4 border-gray-900"} text-gray-900 text-sm rounded-lg block max-lg:w-auto w-[30rem] p-4`} value={BookLink} onChange={(event) => setBookLink(event.target.value)} />
-              <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900 dark:text-white">
+              <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900">
                 Author
               </h3>
               <br />
               <input type="text" className={`mb-6 font-[700] text-[20px] outline-none mx-auto bg-gray-300 ${isUpdated ? "border-4 border-blue-700" : "border-4 border-gray-900"} text-gray-900 text-sm rounded-lg block max-lg:w-auto w-[30rem] p-4 `} value={BookAuthor} onChange={(event) => setBookAuthor(event.target.value)} />
-              <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900 dark:text-white">
+              <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900">
                 Publisher
               </h3>
               <br />
@@ -440,7 +440,7 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
               <br />
 
               <form className="max-w-sm grid items-center justify-center mx-auto">
-                <label htmlFor="type" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
+                <label htmlFor="type" className="block mb-2 text-sm font-medium text-gray-900">Select an option</label>
                 <select id="type" className="max-lg:w-auto mb-6 font-[700] text-[20px] outline-none mx-auto bg-gray-300 border-4 border-gray-900 text-gray-900 text-sm rounded-lg block w-[30rem] p-4 " onChange={(event) => setBookType(event.target.value)}>
                   <option defaultValue={BookType}>Choose a book type</option>
                   <option value="IT">Information Technology</option>
@@ -459,7 +459,7 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
                 </select>
               </form>
               <form className="max-w-sm grid items-center justify-center mx-auto">
-                <label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
+                <label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-900">Select an option</label>
                 <select onChange={(event) => {
                   setBookLanguage(event.target.value); console.log(BookLanguage);
                 }} id="countries" className={`mb-6 max-lg:w-auto font-[700] text-[20px] outline-none mx-auto bg-gray-300 ${isUpdated ? "border-4 border-blue-700" : "border-4 border-gray-900"} text-gray-900 text-sm rounded-lg block w-[30rem] p-4 `}>
@@ -470,12 +470,12 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
                 </select>
               </form>
 
-              <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900 dark:text-white">
+              <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900">
                 Description
               </h3>
               <textarea rows="4" className={`${isUpdated ? "border-4 border-blue-700" : "border-4 border-gray-900"} block font-[700] text-[20px] p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg outline-none`} placeholder="Write your thoughts here..." value={BookDescrib} onChange={(event) => setBookDescrib(event.target.value)}></textarea>
               <br />
-              <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900 dark:text-white">
+              <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900">
                 preview images
               </h3>
               <br />

@@ -383,75 +383,75 @@ function EditBook() {
             <div className="flex h-[3rem]">
               <div className='relative'>
                 <ProtectRoute />
-                <label htmlFor="dropdown" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Your Email</label>
+                <label htmlFor="dropdown" className="mb-2 text-sm font-medium text-gray-900 sr-only ">Your Email</label>
                 <button onClick={() => setDropdown(1)} id="dropdown-button" data-dropdown-toggle="dropdown" className=" h-[3rem] flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 outline-none" type="button">{catagory == "" ? "All Catagory" : catagory} <svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                   <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
                 </svg>
 
                 </button>
-                <div id="dropdown" className={`z-40 ${dropdown == 1 ? "block" : "hidden"} bg-white left-0 top-0 h-[3rem] divide-y absolute mt-11 divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700`}>
-                  <ul className="py-2 shadow-lg shadow-black overflow-y-scroll h-[40vh] text-sm text-gray-700 w-[10rem] bg-white dark:text-gray-200" >
+                <div id="dropdown" className={`z-40 ${dropdown == 1 ? "block" : "hidden"} bg-white left-0 top-0 h-[3rem] divide-y absolute mt-11 divide-gray-100 rounded-lg shadow w-auto `}>
+                  <ul className="py-2 shadow-lg shadow-black overflow-y-scroll h-[40vh] text-sm text-gray-700 w-[10rem] bg-white " >
                     <li>
                       <button type="button" onClick={() => { setDropdown(0); setGatagory("") }}
-                        className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">All</button>
+                        className="inline-flex w-full px-4 py-2 hover:bg-gray-100 ">All</button>
                     </li>
                     <li>
-                      <button type="button" onClick={() => { setGatagory("IT"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">IT</button>
+                      <button type="button" onClick={() => { setGatagory("IT"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">IT</button>
                     </li>
                     <li>
-                      <button type="button" onClick={() => { setGatagory("constructor"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Constructor</button>
+                      <button type="button" onClick={() => { setGatagory("constructor"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Constructor</button>
                     </li>
                     <li>
-                      <button type="button" onClick={() => { setGatagory("agreculture"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Agreculture</button>
+                      <button type="button" onClick={() => { setGatagory("agreculture"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Agreculture</button>
                     </li>
                     <li>
-                      <button type="button" onClick={() => { setGatagory("accounting"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Accounting</button>
+                      <button type="button" onClick={() => { setGatagory("accounting"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Accounting</button>
                     </li>
                     <li>
-                      <button type="button" onClick={() => { setGatagory("law"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Law</button>
+                      <button type="button" onClick={() => { setGatagory("law"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Law</button>
                     </li>
                     <li>
-                      <button type="button" onClick={() => { setGatagory("chinese"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Chinese</button>
+                      <button type="button" onClick={() => { setGatagory("chinese"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Chinese</button>
                     </li>
                     <li>
-                      <button type="button" onClick={() => { setGatagory("english"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">English</button>
+                      <button type="button" onClick={() => { setGatagory("english"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">English</button>
                     </li>
                     <li>
-                      <button type="button" onClick={() => { setGatagory("general"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">General Knowledg</button>
+                      <button type="button" onClick={() => { setGatagory("general"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">General Knowledg</button>
                     </li>
                     <li>
-                      <button type="button" onClick={() => { setGatagory("electric"); setDropdown(false) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Electric</button>
+                      <button type="button" onClick={() => { setGatagory("electric"); setDropdown(false) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Electric</button>
                     </li>
                     <li>
-                      <button type="button" onClick={() => { setGatagory("electronic"); setDropdown(false) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Electronic</button>
+                      <button type="button" onClick={() => { setGatagory("electronic"); setDropdown(false) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Electronic</button>
                     </li>
                     <li>
-                      <button type="button" onClick={() => { setGatagory("animal"); setDropdown(false) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Animal husbandry</button>
+                      <button type="button" onClick={() => { setGatagory("animal"); setDropdown(false) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Animal husbandry</button>
                     </li>
                     <li>
-                      <button type="button" onClick={() => { setGatagory("other"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Other</button>
+                      <button type="button" onClick={() => { setGatagory("other"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Other</button>
                     </li>
                   </ul>
                 </div>
 
               </div>
               <div className='relative'>
-                <label htmlFor="search-dropdown" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Your Email</label>
+                <label htmlFor="search-dropdown" className="mb-2 text-sm font-medium text-gray-900 sr-only ">Your Email</label>
                 <button onClick={() => setDropdown(2)} id="dropdown-button" data-dropdown-toggle="dropdown" className="h-[3rem] flex-shrink-0 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 hover:bg-gray-200 outline-none" type="button">{language == "" ? "All Language" : language} <svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                   <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
                 </svg>
 
                 </button>
-                <div id="dropdown" className={`z-40 ${dropdown == 2 ? "block" : "hidden"} left-0 top-0 bg-white h-[3rem] divide-y absolute mt-11 divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700`}>
-                  <ul className="py-2 shadow-lg shadow-black text-sm text-gray-700 bg-white dark:text-gray-200" >
+                <div id="dropdown" className={`z-40 ${dropdown == 2 ? "block" : "hidden"} left-0 top-0 bg-white h-[3rem] divide-y absolute mt-11 divide-gray-100 rounded-lg shadow w-auto `}>
+                  <ul className="py-2 shadow-lg shadow-black text-sm text-gray-700 bg-white " >
                     <li>
-                      <button type="button" onClick={() => { setLanguage(""); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">All</button>
+                      <button type="button" onClick={() => { setLanguage(""); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 ">All</button>
                     </li>
                     <li>
-                      <button type="button" onClick={() => { setLanguage("foriegn"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Foriegn</button>
+                      <button type="button" onClick={() => { setLanguage("foriegn"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 ">Foriegn</button>
                     </li>
                     <li>
-                      <button type="button" onClick={() => { setLanguage("khmer"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Khmer</button>
+                      <button type="button" onClick={() => { setLanguage("khmer"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 ">Khmer</button>
                     </li>
 
                   </ul>
@@ -460,18 +460,18 @@ function EditBook() {
               </div>
               <div className="relative w-full">
                 <input onChange={(event) => { setKeyword(event.target.value); handleSearch(event.target.value); event.target.value != "" ? setDropdown(3) : setDropdown(0) }} autoComplete='off' type="search" id="search-dropdown" className="block p-2.5 md:w-full z-20 h-[3rem] text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300  outline-none" placeholder="Search ..." />
-                <button type='button' onClick={handleSearchButton} className="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <button type='button' onClick={handleSearchButton} className="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
                   <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                   </svg>
                   <span className="sr-only">Search</span>
                 </button>
-                <div id="dropdown" className={`z-40 ${dropdown == 3 ? "block" : "hidden"} left-0 top-0 bg-white h-[3rem] divide-y absolute mt-11 divide-gray-100 rounded-lg shadow w-[10rem] dark:bg-gray-700`}>
-                  <ul className="py-2 text-sm text-gray-700 bg-white dark:text-gray-200" >
+                <div id="dropdown" className={`z-40 ${dropdown == 3 ? "block" : "hidden"} left-0 top-0 bg-white h-[3rem] divide-y absolute mt-11 divide-gray-100 rounded-lg shadow w-[10rem] `}>
+                  <ul className="py-2 text-sm text-gray-700 bg-white " >
 
                     {result.map((ele, i) =>
                       <li key={i}>
-                        <button type="button" onClick={() => { setDropdown(0); handleKeyClick(ele.Title) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{ele.Title}</button>
+                        <button type="button" onClick={() => { setDropdown(0); handleKeyClick(ele.Title) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 ">{ele.Title}</button>
                       </li>)}
 
                   </ul>
@@ -500,7 +500,7 @@ function EditBook() {
                 <div role="status" className={`w-full fixed z-50 h-[100vh] top-0 left-0 backdrop-blur-md justify-center ${loading ? "grid" : "hidden"} items-center `}>
                   
 
-                  <div className="w-[10rem] bg-violet-700 h-[1.5rem] relative rounded-full overflow-hidden  dark:bg-gray-700">
+                  <div className="w-[10rem] bg-violet-700 h-[1.5rem] relative rounded-full overflow-hidden  ">
                     <div className={`bg-blue-600 h-[1.5rem] rounded-full w-full absolute right-full`} style={{
                       transform: `translateX(${uploadProgress}%)`
                     }} >
@@ -514,10 +514,10 @@ function EditBook() {
                   
                 </div>
                 <div className=" flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
-                  <h3 className=" text-xl  font-semibold text-gray-900 dark:text-white">
+                  <h3 className=" text-xl  font-semibold text-gray-900 ">
                     Add Book
                   </h3>
-                  <button type="button" onClick={() => setInsertForm(!insertForm)} className="fixed right-16 text-gray-400  bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
+                  <button type="button" onClick={() => setInsertForm(!insertForm)} className="fixed right-16 text-gray-400  bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center " data-modal-hide="default-modal">
                     <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                       <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                     </svg>
@@ -525,24 +525,24 @@ function EditBook() {
                   </button>
                 </div>
                 <div className=" grid items-center justify-center p-4 md:p-5 border-b rounded-t border-gray-200">
-                  <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900 dark:text-white">
+                  <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900 ">
                     Title
                   </h3>
                   <br />
                   <input
                     type="text" className="mb-6 font-[700] text-[20px] outline-none mx-auto bg-gray-300 border-4 border-gray-900 text-gray-900 text-sm rounded-lg block  max-md:w-auto  w-[30rem] p-4 " onChange={(event) => setBookTitle(event.target.value)} />
 
-                  <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900 dark:text-white">
+                  <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900 ">
                     PDF file
                   </h3>
                   <br />
                   <input type="file" accept='.pdf' className="mb-6 font-[700] text-[20px] outline-none mx-auto bg-gray-300 border-4 border-gray-900 text-gray-900 text-sm rounded-lg block max-md:w-auto w-[30rem] p-4 " onChange={(event) => { setBookLink(event.target.files[0]); }} />
-                  <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900 dark:text-white">
+                  <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900 ">
                     Author
                   </h3>
                   <br />
                   <input type="text" className="mb-6 font-[700] text-[20px] outline-none mx-auto bg-gray-300 border-4 border-gray-900 text-gray-900 text-sm rounded-lg block max-md:w-auto w-[30rem] p-4 " onChange={(event) => setBookAuthor(event.target.value)} />
-                  <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900 dark:text-white">
+                  <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900 ">
                     Publisher
                   </h3>
                   <br />
@@ -551,7 +551,7 @@ function EditBook() {
                   <br />
 
                   <form className="max-w-sm grid items-center justify-center mx-auto">
-                    <label htmlFor="type" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
+                    <label htmlFor="type" className="block mb-2 text-sm font-medium text-gray-900 ">Select an option</label>
                     <select id="type" className="mb-6 font-[700] text-[20px] outline-none mx-auto bg-gray-300 border-4 border-gray-900 text-gray-900 text-sm rounded-lg block max-md:w-auto w-[30rem] p-4 " onChange={(event) => setBookType(event.target.value)}>
                       <option defaultValue="">Choose a book type</option>
                       <option value="IT">Information Technology</option>
@@ -570,7 +570,7 @@ function EditBook() {
                     </select>
                   </form>
                   <form className="max-w-sm grid items-center justify-center mx-auto">
-                    <label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
+                    <label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-900 ">Select an option</label>
                     <select id="countries" className="mb-6 font-[700] text-[20px] outline-none mx-auto bg-gray-300 border-4 border-gray-900 text-gray-900 text-sm rounded-lg block max-md:w-auto w-[30rem] p-4 " onChange={(event) => setBookLanguage(event.target.value)}>
                       <option defaultValue="">Choose a book language</option>
                       <option value="foriegn">Foriegn</option>
@@ -580,12 +580,12 @@ function EditBook() {
                   </form>
 
 
-                  <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900 dark:text-white">
+                  <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900 ">
                     Description
                   </h3>
-                  <textarea rows="4" className="block font-[700] text-[20px] p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..." value={BookDescrib} onChange={(event) => setBookDescrib(event.target.value)}></textarea>
+                  <textarea rows="4" className="block font-[700] text-[20px] p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500  " placeholder="Write your thoughts here..." value={BookDescrib} onChange={(event) => setBookDescrib(event.target.value)}></textarea>
                   <br />
-                  <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900 dark:text-white">
+                  <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900 ">
                     preview images
                   </h3>
                   <br />

@@ -24,15 +24,15 @@ function Login() {
             <div className='flex items-center justify-center h-[100vh]'>
                 <form className="bg-gray-400 max-w-sm p-8 rounded-lg w-[30rem]">
                     <div className="mb-5">
-                        <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
-                        <input onChange={(event) => setUsername(event.target.value)} type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="username" required />
+                        <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 ">Username</label>
+                        <input onChange={(event) => setUsername(event.target.value)} type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="username" required />
                     </div>
                     <div className="mb-5">
-                        <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                        <input onKeyDown={(event) => event.key == "Enter" && handleLogin()} onChange={(event) => setPassword(event.target.value)} type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                        <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 ">Password</label>
+                        <input onKeyDown={(event) => event.key == "Enter" && handleLogin()} onChange={(event) => setPassword(event.target.value)} type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required />
                     </div>
                     <div className='flex items-center justify-center'>
-                        <button onClick={handleLogin} type="button" className="mx-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                        <button onClick={handleLogin} type="button" className="mx-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
                     </div>
                 </form>
 
