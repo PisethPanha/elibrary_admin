@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import BookCard from '../component/BookCard'
 import { useNavigate } from 'react-router-dom';
 import ProtectRoute from '../component/ProtectRoute';
+import BookCardHorizental from '../component/BookCardHorizental';
 
 
 function EditBook() {
@@ -50,13 +51,29 @@ function EditBook() {
   const [fileReady3, setFileReady3] = useState(0)
   const [fileReady4, setFileReady4] = useState(0)
   const [fileReady5, setFileReady5] = useState(0)
+  const [template, setTemplate] = useState(Boolean)
+
   const tokenTMP = "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AA"
   const GitToken = tokenTMP.slice(0, -2);
-  let fileReady = [setFileReady1, setFileReady2, setFileReady3, setFileReady4, setFileReady5]
   let images = [BookImage1, BookImage2, BookImage3]
   let upStatus = [setIsUpload1, setIsUpload2, setIsUpload3]
   const navigate = useNavigate();
 
+
+  useEffect(() => {
+    let tam = localStorage.getItem("template")
+    if (tam !== null) {  // Ensure tam is not null
+      setTemplate(JSON.parse(tam)); // Convert string to boolean
+    }
+  }, [])
+
+  function changeTemplate() {
+    const NewTam = !template;
+    setTemplate(NewTam);
+    localStorage.setItem("template", JSON.stringify(!template))
+
+
+  }
 
 
   async function handleSubmit() {
@@ -371,15 +388,16 @@ function EditBook() {
     const percent = sum * 100
     setUploadProgress(percent / 600)
     console.log(uploadProgress);
-    
-    
-  },[uploadProgress1, uploadProgress2, uploadProgress3, uploadProgress4, uploadProgress5, uploadProgress6])
+
+
+  }, [uploadProgress1, uploadProgress2, uploadProgress3, uploadProgress4, uploadProgress5, uploadProgress6])
 
   return (
     <div className="p-4 sm:ml-64">
       <div className="p-4 rounded-lg ">
         <div className='flex items-center justify-center'>
-          <form className="max-w-lg mx-auto flex gap-4  ">
+          <div>
+          <form className=" mx-auto flex gap-4  ">
             <div className="flex h-[3rem]">
               <div className='relative'>
                 <ProtectRoute />
@@ -479,8 +497,14 @@ function EditBook() {
                 <div className={`fixed w-full h-full top-0 left-0 z-10 ${dropdown == 3 ? "block" : "hidden"}`} onClick={() => setDropdown(0)}></div>
               </div>
             </div>
-            <button type='button' onClick={() => setInsertForm(!insertForm)} className='bg-blue-700 h-[3rem] hover:bg-blue-600 duration-100 max-md:text-[15px] outline-none px-2 rounded-lg text-white font-[700]'>ADD BOOK</button>
+
           </form>
+          <br />
+          <div className='gap-4 max-md:grid flex items-center justify-center'>
+            <button type='button' onClick={() => setInsertForm(!insertForm)} className='bg-blue-700 h-[3rem] hover:bg-blue-600 duration-100 max-md:text-[15px] outline-none px-2 rounded-lg text-white font-[700]'>ADD BOOK</button>
+            <button type='button' onClick={changeTemplate} className='bg-blue-700 h-[3rem] hover:bg-blue-600 duration-100 max-md:text-[15px] outline-none px-2 rounded-lg text-white font-[700]'>{template ? "SEE AS LIST" : "SEE AS CARD"}</button>
+          </div>
+          </div>
           <br />
           <br />
           <br />
@@ -496,22 +520,22 @@ function EditBook() {
             </div>
             <div className="relative h-full mx-auto p-4">
               <div className="relative overflow-y-scroll border-2 border-gray-900 h-full  bg-white rounded-lg shadow-sm ">
-                
+
                 <div role="status" className={`w-full fixed z-50 h-[100vh] top-0 left-0 backdrop-blur-md justify-center ${loading ? "grid" : "hidden"} items-center `}>
-                  
+
 
                   <div className="w-[10rem] bg-violet-700 h-[1.5rem] relative rounded-full overflow-hidden  ">
                     <div className={`bg-blue-600 h-[1.5rem] rounded-full w-full absolute right-full`} style={{
                       transform: `translateX(${uploadProgress}%)`
                     }} >
-                    
+
                     </div>
                     <div className='absolute z-40 flex items-center justify-center w-full'>
-                    <h1 className='text-center text-white font-[800]'>{Math.round(uploadProgress)}%</h1>
+                      <h1 className='text-center text-white font-[800]'>{Math.round(uploadProgress)}%</h1>
+                    </div>
                   </div>
-                  </div>
-                  
-                  
+
+
                 </div>
                 <div className=" flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
                   <h3 className=" text-xl  font-semibold text-gray-900 ">
@@ -660,19 +684,26 @@ function EditBook() {
         </div>
         <div className='grid relative justify-center items-center'>
 
-          <div className='grid grid-cols-3 max-md:grid-cols-1 gap-4 max-md:items-center max-md:justify-center'>
-            {
-              loading ?
-                <div role="status" className={`left-0 h-[100vh] top-0 fixed w-full justify-center items-center flex`}>
-                  <svg aria-hidden="true" className="w-8 mx-auto h-8 text-gray-200 animate-spin fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
-                    <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
-                  </svg>
-                  <span className="sr-only">Loading...</span>
-                </div>
-                :
-                data.map((ele, i) => <BookCard key={i} read={ele.read_link} view={ele.view} download={ele.download} language={ele.language} type={ele.type} author={ele.autor} publisher={ele.publisher} publish_date={ele.publish_date} id={ele.id} img={ele.img} title={ele.Title} describ={ele.describetion} link={ele.link_download} img1={ele.img_content1} img2={ele.img_content2} img3={ele.img_content3} />)}
-          </div>
+          {template ?
+
+            <div className=' grid grid-cols-3 max-md:grid-cols-1 gap-4 max-md:items-center max-md:justify-center'>
+              {
+                loading ?
+                  <div role="status" className={`left-0 h-[100vh] top-0 fixed w-full justify-center items-center flex`}>
+                    <svg aria-hidden="true" className="w-8 mx-auto h-8 text-gray-200 animate-spin fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
+                      <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
+                    </svg>
+                    <span className="sr-only">Loading...</span>
+                  </div>
+                  :
+                  data.map((ele, i) => <BookCard key={i} read={ele.read_link} view={ele.view} download={ele.download} language={ele.language} type={ele.type} author={ele.autor} publisher={ele.publisher} publish_date={ele.publish_date} id={ele.id} img={ele.img} title={ele.Title} describ={ele.describetion} link={ele.link_download} img1={ele.img_content1} img2={ele.img_content2} img3={ele.img_content3} />)}
+            </div>
+            :
+            <div className='relative mt-8 max-md:overflow-y-scroll w-full'>
+              <BookCardHorizental data={data} />
+            </div>
+          }
           <br />
           <button onClick={fetchMoreData} className={` font-[700] text-[20px] text-white bg-blue-700 hover:bg-pink-700 duration-100 hover:shadow-xl hover:shadow-pink-400 w-[10rem] mx-auto rounded-lg ${more ? "block" : "hidden"}`}>More</button>
           <button className={` font-[700] text-[20px] text-white bg-blue-700 duration-100  w-[10rem] mx-auto rounded-lg ${more ? "hidden" : "block"}`}>No More</button>

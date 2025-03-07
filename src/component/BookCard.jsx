@@ -53,7 +53,7 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
     const sum = uploadProgress1 + uploadProgress2 + uploadProgress3 + uploadProgress4
     const multi = sum * 100
     setUploadProgress(multi / 400)
-    console.log(uploadProgress);
+    
 
   }, [uploadProgress1, uploadProgress2, uploadProgress3, uploadProgress4])
 
@@ -259,8 +259,6 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
   }
   useEffect(() => {
     const sumLoading = step1 + step2 + step3 + step4
-    console.log(sumLoading);
-
     if (sumLoading == 40) {
       setLoading(false)
       alert("edited")

@@ -12,6 +12,7 @@ function Login() {
         await axios.post("https://carefree-empathy-production.up.railway.app/login", {username: username, password: password}).then((res) => 
         {if(res.data.message == "bdskfkfjdskflkfmlkdfkdsnfksdfkadsfdkvfdkjgnfgjka"){
             localStorage.setItem("authorization", res.data.message)
+                
             navigate("/")  
         }else{
             alert(res.data.message)
