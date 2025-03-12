@@ -320,8 +320,12 @@ function EditBook() {
         console.log("Download Link:", downloadUrl);
         axios.get("https://carefree-empathy-production.up.railway.app/changeDownloadLink", { params: { id: id, link: downloadUrl } }).then((res) => {
           console.log(res.data);
-          ; res.data.message == "updated" && handleUpload(file, id)
+          if(res.data.message == "updated"){
+          setUploadProgress6(100);
+          setFileReady5(1);
+          }
         })
+        
       } catch (error) {
         console.error("Error uploading file:", error.response?.data || error);
 
