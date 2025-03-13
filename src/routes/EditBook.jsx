@@ -110,7 +110,8 @@ function EditBook() {
         image3: BookNameImage3,
         language: BookLanguage,
         date: formattedDate,
-        type: BookType
+        type: BookType,
+        status: "true"
       },
         {
           onUploadProgress: (progressEvent) => {
