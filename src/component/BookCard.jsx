@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-function BookCard({ read, view, download, language, type, id, img, title, describ, link, img1, img2, img3, author, publisher, publish_date }) {
+function BookCard({ btnApproval, read, view, download, language, type, id, img, title, describ, link, img1, img2, img3, author, publisher, publish_date }) {
   const [dialog, setDialog] = useState(false)
   const [edit, setEdit] = useState(false)
   const [imgZoom, setImgZoom] = useState()
@@ -266,6 +266,8 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
     }
   }, [step1, step2, step3, step4])
 
+  
+
   return (
     <div>
       <div style={{ boxShadow: "0px 0px 20px gray" }} className="   mt-4 max-md:mx-auto bg-white border border-gray-200 rounded-lg shadow ">
@@ -291,6 +293,7 @@ function BookCard({ read, view, download, language, type, id, img, title, descri
             Delete
 
           </p>
+          
 
         </div>
 

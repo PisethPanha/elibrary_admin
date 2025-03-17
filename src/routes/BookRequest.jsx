@@ -23,8 +23,9 @@ function BookRequest() {
 
     return (
 
-        <div className='relative overflow-x-scroll flex items-center justify-center mt-8 max-xmd:overflow-y-scroll w-full'>
+        <div className={` ${data.length == 0 ? "" : "overflow-x-scroll" } relative  flex items-center justify-center mt-8 max-md:overflow-y-scroll w-full`}>
             <ProtectRoute />
+            
             {
                 loading ?
                     <div role="status" className={`${loading ? "block" : "block"} h-full w-full justify-center items-center flex`}>
@@ -34,8 +35,10 @@ function BookRequest() {
                         </svg>
                         <span className="sr-only">Loading...</span>
                     </div> :
-
-                    <BookCardHorizental data={data} />
+                    data.length != 0 ?
+                    <BookCardHorizental data={data} btnApproval={true} />
+                    :
+                    <p>No user request book</p>
             }
         </div>
 

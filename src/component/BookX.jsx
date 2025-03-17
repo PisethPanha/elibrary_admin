@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-function BookX({ read, view, download, language, type, id, img, title, describ, link, img1, img2, img3, author, publisher, publish_date }) {
+function BookX({ btnApproval, read, view, download, language, type, id, img, title, describ, link, img1, img2, img3, author, publisher, publish_date }) {
     const [dialog, setDialog] = useState(false)
     const [edit, setEdit] = useState(false)
     const [imgZoom, setImgZoom] = useState()
@@ -269,6 +269,15 @@ function BookX({ read, view, download, language, type, id, img, title, describ, 
         }
     }, [step1, step2, step3, step4])
 
+    async function handleApproval(){
+        await axios.get("https://carefree-empathy-production.up.railway.app/approval", 
+            {
+                params: {
+                    id: id
+                }
+            }).then((res) => console.log(res.data))
+    }
+
     return (
         
             <tr className="mt-4 relative max-md:mx-auto bg-white border border-gray-200 rounded-lg shadow ">
@@ -295,6 +304,7 @@ function BookX({ read, view, download, language, type, id, img, title, describ, 
                         <button onClick={() => setDialog(!dialog)} className='w-[4.5rem] mx-auto cursor-pointer items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300'>Preview</button>
                         <button onClick={() => { setEdit(!edit) }} className='w-[4.5rem] mx-auto cursor-pointer items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300'>Edit</button>
                         <button onClick={handleDelete} className='w-[4rem] mx-auto cursor-pointer items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300'>Delete</button>
+                        <button onClick={handleApproval}  className={` ${btnApproval ? "block" : "hidden"} w-[4.5rem] mx-auto cursor-pointer items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-500 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300`}>Approve</button>
                     </div>
                 </td>
 

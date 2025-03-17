@@ -1,7 +1,7 @@
 
 import React from 'react'
 import BookX from './BookX'
-function BookCardHorizental({ data }) {
+function BookCardHorizental({ data, btnApproval }) {
     
     return (
         <div className=' p-4'>
@@ -33,7 +33,7 @@ function BookCardHorizental({ data }) {
                 </thead>
                 <tbody>
                 {data.map((ele, i) =>
-                    <BookX key={i} read={ele.read_link} view={ele.view} download={ele.download} language={ele.language} type={ele.type} author={ele.autor} publisher={ele.publisher} publish_date={ele.publish_date} id={ele.id} img={ele.img} title={ele.Title} describ={ele.describetion} link={ele.link_download} img1={ele.img_content1} img2={ele.img_content2} img3={ele.img_content3} />
+                    <BookX key={i} btnApproval={btnApproval} read={ele.read_link} view={ele.view} download={ele.download} language={ele.language} type={ele.type} author={ele.autor} publisher={ele.publisher} publish_date={ele.publish_date} id={ele.id} img={ele.img} title={ele.Title} describ={ele.describetion} link={ele.link_download} img1={ele.img_content1} img2={ele.img_content2} img3={ele.img_content3} />
                 )}
                 </tbody>
             </table>

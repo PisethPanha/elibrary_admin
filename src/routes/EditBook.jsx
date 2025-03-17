@@ -702,7 +702,7 @@ function EditBook() {
                     <span className="sr-only">Loading...</span>
                   </div>
                   :
-                  data.map((ele, i) => <BookCard key={i} read={ele.read_link} view={ele.view} download={ele.download} language={ele.language} type={ele.type} author={ele.autor} publisher={ele.publisher} publish_date={ele.publish_date} id={ele.id} img={ele.img} title={ele.Title} describ={ele.describetion} link={ele.link_download} img1={ele.img_content1} img2={ele.img_content2} img3={ele.img_content3} />)}
+                  data.map((ele, i) => <BookCard key={i} btnApproval={false} read={ele.read_link} view={ele.view} download={ele.download} language={ele.language} type={ele.type} author={ele.autor} publisher={ele.publisher} publish_date={ele.publish_date} id={ele.id} img={ele.img} title={ele.Title} describ={ele.describetion} link={ele.link_download} img1={ele.img_content1} img2={ele.img_content2} img3={ele.img_content3} />)}
             </div>
             :
             loading ?
@@ -714,8 +714,9 @@ function EditBook() {
                 <span className="sr-only">Loading...</span>
               </div>
               :
+              
               <div className='relative mt-8 max-xmd:overflow-y-scroll w-full'>
-                <BookCardHorizental data={data} />
+                <BookCardHorizental data={data} btnApproval={false}/>
               </div>
           }
           <br />
