@@ -131,7 +131,7 @@ function EditBook() {
           }
           uploadPDFToGitHub(BookLink, (link) => {
             console.log(link);
-          }, res.data.id + 1)
+          }, res.data.id)
 
 
 
@@ -162,7 +162,7 @@ function EditBook() {
 
       const githubUsername = "PisethPanha";
       const repoName = "ebook_photos";
-      const filePath = `${id + 1 + file.name}`; // Upload directly to the root directory
+      const filePath = `${id + file.name}`; // Upload directly to the root directory
       const branch = "main"; // Change branch if needed
       const token = GitToken;
 
@@ -253,7 +253,7 @@ function EditBook() {
     const sumFileReady1 = fileReady1 + fileReady2 + fileReady3 + fileReady4 + fileReady5
     if (sumFileReady1 == 5) {
       alert("All Done")
-      navigate(0)
+      // navigate(0)
       setLoading(false)
     }
 
@@ -319,6 +319,8 @@ function EditBook() {
         img(downloadUrl);
 
         console.log("Download Link:", downloadUrl);
+        console.log(id);
+        
         axios.get("https://carefree-empathy-production.up.railway.app/changeDownloadLink", { params: { id: id, link: downloadUrl } }).then((res) => {
           console.log(res.data);
           if (res.data.message == "updated") {
