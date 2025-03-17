@@ -275,7 +275,7 @@ function BookX({ read, view, download, language, type, id, img, title, describ, 
                 <td className='border-2 border-gray-900 p-2'>
                     <img onClick={() => setImgZoom(!imgZoom)} className=" mx-auto  min-w-[10rem] h-[10rem]" src={`https://raw.githubusercontent.com/PisethPanha/ebook_photos/refs/heads/main/${img}`} alt="" />
                 </td>
-                <td className='border-2 text-center text-[18px] font-[700] border-gray-900 p-2'>
+                <td className='border-2 text-center text-[14px] font-[700] border-gray-900 p-2'>
                     {title}
                 </td>
                 <td className='border-2 border-gray-900 p-2 text-center text-[18px] font-[700]'>
@@ -292,9 +292,9 @@ function BookX({ read, view, download, language, type, id, img, title, describ, 
                 </td>
                 <td className='border-2 border-gray-900 p-2 text-center text-[18px] font-[700]'>
                     <div className='grid gap-4  '>
-                        <button onClick={() => setDialog(!dialog)} className='w-[10rem] mx-auto cursor-pointer items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300'>Preview</button>
-                        <button onClick={() => { setEdit(!edit) }} className='w-[10rem] mx-auto cursor-pointer items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300'>Edit</button>
-                        <button onClick={handleDelete} className='w-[10rem] mx-auto cursor-pointer items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300'>Delete</button>
+                        <button onClick={() => setDialog(!dialog)} className='w-[4.5rem] mx-auto cursor-pointer items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300'>Preview</button>
+                        <button onClick={() => { setEdit(!edit) }} className='w-[4.5rem] mx-auto cursor-pointer items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300'>Edit</button>
+                        <button onClick={handleDelete} className='w-[4rem] mx-auto cursor-pointer items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300'>Delete</button>
                     </div>
                 </td>
 

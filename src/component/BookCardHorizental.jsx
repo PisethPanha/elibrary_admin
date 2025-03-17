@@ -4,8 +4,8 @@ import BookX from './BookX'
 function BookCardHorizental({ data }) {
     
     return (
-        <div>
-            <table className='relative'>
+        <div className=' p-4'>
+            <table className='relative '>
                 <thead className=' bg-gray-200'>
                 <tr className=''>
                     <th className='z-50 border-2 border-gray-900 p-2'>

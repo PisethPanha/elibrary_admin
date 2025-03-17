@@ -236,8 +236,8 @@ function EditBook() {
     if (catagory == "" && language == "" && keyword == "") {
       setOffset(0);
       setLimit(10)
-      axios.get("https://carefree-empathy-production.up.railway.app/getbook", { params: { offset: 0, limit: 10, language: '' } }).then((res) => {
-        setData(res.data.reverse());
+      axios.get("https://carefree-empathy-production.up.railway.app/getbook", { params: { offset: 0, limit: 10, language: '', status: 'true' } }).then((res) => {
+        setData(res.data);
         setLoading(false)
         setMore(true)
       })
@@ -341,14 +341,14 @@ function EditBook() {
 
   useEffect(() => {
     setLoading(true)
-    axios.get("https://carefree-empathy-production.up.railway.app/getbook", { params: { offset: offset, limit: limit, language: '' } }).then((res) => {
+    axios.get("https://carefree-empathy-production.up.railway.app/getbook", { params: { offset: offset, limit: limit, language: '', status: "true" } }).then((res) => {
       setData(res.data); console.log(res); setLoading(false)
     })
   }, [])
 
 
   function fetchMoreData() {
-    axios.get("https://carefree-empathy-production.up.railway.app/getbook", { params: { offset: offset + 10, limit: limit, language: '' } }).then((res) => {
+    axios.get("https://carefree-empathy-production.up.railway.app/getbook", { params: { offset: offset + 10, limit: limit, language: '', status: "true" } }).then((res) => {
       if (res.data.length == 0) {
         setMore(false)
       } else {
@@ -398,7 +398,7 @@ function EditBook() {
   }, [uploadProgress1, uploadProgress2, uploadProgress3, uploadProgress4, uploadProgress5, uploadProgress6])
 
   return (
-    <div className="p-4 sm:ml-64">
+    <div className="p-4 ">
       <div className="p-4 rounded-lg ">
         <div className='flex items-center justify-center'>
           <div>
@@ -482,7 +482,7 @@ function EditBook() {
 
               </div>
               <div className="relative w-full">
-                <input onChange={(event) => { setKeyword(event.target.value); handleSearch(event.target.value); event.target.value != "" ? setDropdown(3) : setDropdown(0) }} autoComplete='off' type="search" id="search-dropdown" className="block p-2.5 md:w-full z-20 h-[3rem] text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300  outline-none" placeholder="Search ..." />
+                <input onChange={(event) => { setKeyword(event.target.value); handleSearch(event.target.value); event.target.value != "" ? setDropdown(3) : setDropdown(0) }} autoComplete='off' type="search" id="search-dropdown" className="block p-2.5 xmd:w-full z-20 h-[3rem] text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300  outline-none" placeholder="Search ..." />
                 <button type='button' onClick={handleSearchButton} className="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
                   <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
@@ -505,9 +505,9 @@ function EditBook() {
 
           </form>
           <br />
-          <div className='gap-4 max-md:grid flex items-center justify-center'>
-            <button type='button' onClick={() => setInsertForm(!insertForm)} className='bg-blue-700 h-[3rem] hover:bg-blue-600 duration-100 max-md:text-[15px] outline-none px-2 rounded-lg text-white font-[700]'>ADD BOOK</button>
-            <button type='button' onClick={changeTemplate} className='bg-blue-700 h-[3rem] hover:bg-blue-600 duration-100 max-md:text-[15px] outline-none px-2 rounded-lg text-white font-[700]'>{template ? "SEE AS LIST" : "SEE AS CARD"}</button>
+          <div className='gap-4 max-xmd:grid flex items-center justify-center'>
+            <button type='button' onClick={() => setInsertForm(!insertForm)} className='bg-blue-700 h-[3rem] hover:bg-blue-600 duration-100 max-xmd:text-[15px] outline-none px-2 rounded-lg text-white font-[700]'>ADD BOOK</button>
+            <button type='button' onClick={changeTemplate} className='bg-blue-700 h-[3rem] hover:bg-blue-600 duration-100 max-xmd:text-[15px] outline-none px-2 rounded-lg text-white font-[700]'>{template ? "SEE AS LIST" : "SEE AS CARD"}</button>
           </div>
           </div>
           <br />
@@ -515,7 +515,7 @@ function EditBook() {
           <br />
           <br />
 
-          <div className={`  overflow-y-auto overflow-x-hidden fixed top-0  right-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full ${insertForm ? "block" : "hidden"}`}>
+          <div className={`  overflow-y-auto overflow-x-hidden fixed top-0  right-0 z-50 justify-center items-center w-full xmd:inset-0 h-[calc(100%-1rem)] max-h-full ${insertForm ? "block" : "hidden"}`}>
             <div role="status" className={`${loading ? "block" : "block"} h-full fixed w-full justify-center items-center flex`}>
               <svg aria-hidden="true" className="w-8 mx-auto h-8 text-gray-200 animate-spin fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
@@ -542,7 +542,7 @@ function EditBook() {
 
 
                 </div>
-                <div className=" flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
+                <div className=" flex items-center justify-between p-4 xmd:p-5 border-b rounded-t border-gray-200">
                   <h3 className=" text-xl  font-semibold text-gray-900 ">
                     Add Book
                   </h3>
@@ -553,35 +553,35 @@ function EditBook() {
                     <span className="sr-only">Close modal</span>
                   </button>
                 </div>
-                <div className=" grid items-center justify-center p-4 md:p-5 border-b rounded-t border-gray-200">
+                <div className=" grid items-center justify-center p-4 xmd:p-5 border-b rounded-t border-gray-200">
                   <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900 ">
                     Title
                   </h3>
                   <br />
                   <input
-                    type="text" className="mb-6 font-[700] text-[20px] outline-none mx-auto bg-gray-300 border-4 border-gray-900 text-gray-900 text-sm rounded-lg block  max-md:w-auto  w-[30rem] p-4 " onChange={(event) => setBookTitle(event.target.value)} />
+                    type="text" className="mb-6 font-[700] text-[20px] outline-none mx-auto bg-gray-300 border-4 border-gray-900 text-gray-900 text-sm rounded-lg block  max-xmd:w-auto  w-[30rem] p-4 " onChange={(event) => setBookTitle(event.target.value)} />
 
                   <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900 ">
                     PDF file
                   </h3>
                   <br />
-                  <input type="file" accept='.pdf' className="mb-6 font-[700] text-[20px] outline-none mx-auto bg-gray-300 border-4 border-gray-900 text-gray-900 text-sm rounded-lg block max-md:w-auto w-[30rem] p-4 " onChange={(event) => { setBookLink(event.target.files[0]); }} />
+                  <input type="file" accept='.pdf' className="mb-6 font-[700] text-[20px] outline-none mx-auto bg-gray-300 border-4 border-gray-900 text-gray-900 text-sm rounded-lg block max-xmd:w-auto w-[30rem] p-4 " onChange={(event) => { setBookLink(event.target.files[0]); }} />
                   <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900 ">
                     Author
                   </h3>
                   <br />
-                  <input type="text" className="mb-6 font-[700] text-[20px] outline-none mx-auto bg-gray-300 border-4 border-gray-900 text-gray-900 text-sm rounded-lg block max-md:w-auto w-[30rem] p-4 " onChange={(event) => setBookAuthor(event.target.value)} />
+                  <input type="text" className="mb-6 font-[700] text-[20px] outline-none mx-auto bg-gray-300 border-4 border-gray-900 text-gray-900 text-sm rounded-lg block max-xmd:w-auto w-[30rem] p-4 " onChange={(event) => setBookAuthor(event.target.value)} />
                   <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900 ">
                     Publisher
                   </h3>
                   <br />
-                  <input type="text" className="mb-6 font-[700] text-[20px] outline-none mx-auto bg-gray-300 border-4 border-gray-900 text-gray-900 text-sm rounded-lg block max-md:w-auto w-[30rem] p-4 " onChange={(event) => setBookPublisher(event.target.value)} />
+                  <input type="text" className="mb-6 font-[700] text-[20px] outline-none mx-auto bg-gray-300 border-4 border-gray-900 text-gray-900 text-sm rounded-lg block max-xmd:w-auto w-[30rem] p-4 " onChange={(event) => setBookPublisher(event.target.value)} />
 
                   <br />
 
                   <form className="max-w-sm grid items-center justify-center mx-auto">
                     <label htmlFor="type" className="block mb-2 text-sm font-medium text-gray-900 ">Select an option</label>
-                    <select id="type" className="mb-6 font-[700] text-[20px] outline-none mx-auto bg-gray-300 border-4 border-gray-900 text-gray-900 text-sm rounded-lg block max-md:w-auto w-[30rem] p-4 " onChange={(event) => setBookType(event.target.value)}>
+                    <select id="type" className="mb-6 font-[700] text-[20px] outline-none mx-auto bg-gray-300 border-4 border-gray-900 text-gray-900 text-sm rounded-lg block max-xmd:w-auto w-[30rem] p-4 " onChange={(event) => setBookType(event.target.value)}>
                       <option defaultValue="">Choose a book type</option>
                       <option value="IT">Information Technology</option>
                       <option value="constructor">Constructor</option>
@@ -600,7 +600,7 @@ function EditBook() {
                   </form>
                   <form className="max-w-sm grid items-center justify-center mx-auto">
                     <label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-900 ">Select an option</label>
-                    <select id="countries" className="mb-6 font-[700] text-[20px] outline-none mx-auto bg-gray-300 border-4 border-gray-900 text-gray-900 text-sm rounded-lg block max-md:w-auto w-[30rem] p-4 " onChange={(event) => setBookLanguage(event.target.value)}>
+                    <select id="countries" className="mb-6 font-[700] text-[20px] outline-none mx-auto bg-gray-300 border-4 border-gray-900 text-gray-900 text-sm rounded-lg block max-xmd:w-auto w-[30rem] p-4 " onChange={(event) => setBookLanguage(event.target.value)}>
                       <option defaultValue="">Choose a book language</option>
                       <option value="foriegn">Foriegn</option>
                       <option value="khmer">Khmer</option>
@@ -618,7 +618,7 @@ function EditBook() {
                     preview images
                   </h3>
                   <br />
-                  <div className="grid md:grid-cols-3 gap-4 items-center justify-center">
+                  <div className="grid xmd:grid-cols-3 gap-4 items-center justify-center">
 
                     <label
                       htmlFor="file-upload"
@@ -691,7 +691,7 @@ function EditBook() {
 
           {template ?
 
-            <div className=' grid grid-cols-3 max-md:grid-cols-1 gap-4 max-md:items-center max-md:justify-center'>
+            <div className=' grid grid-cols-3 max-md:grid-cols-1 gap-4 max-xmd:items-center max-xmd:justify-center'>
               {
                 loading ?
                   <div role="status" className={`left-0 h-[100vh] top-0 fixed w-full justify-center items-center flex`}>
@@ -705,7 +705,7 @@ function EditBook() {
                   data.map((ele, i) => <BookCard key={i} read={ele.read_link} view={ele.view} download={ele.download} language={ele.language} type={ele.type} author={ele.autor} publisher={ele.publisher} publish_date={ele.publish_date} id={ele.id} img={ele.img} title={ele.Title} describ={ele.describetion} link={ele.link_download} img1={ele.img_content1} img2={ele.img_content2} img3={ele.img_content3} />)}
             </div>
             :
-            <div className='relative mt-8 max-md:overflow-y-scroll w-full'>
+            <div className='relative mt-8 max-xmd:overflow-y-scroll w-full'>
               <BookCardHorizental data={data} />
             </div>
           }
