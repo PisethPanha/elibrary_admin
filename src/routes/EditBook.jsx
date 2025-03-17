@@ -321,12 +321,12 @@ function EditBook() {
         console.log("Download Link:", downloadUrl);
         axios.get("https://carefree-empathy-production.up.railway.app/changeDownloadLink", { params: { id: id, link: downloadUrl } }).then((res) => {
           console.log(res.data);
-          if(res.data.message == "updated"){
-          setUploadProgress6(100);
-          setFileReady5(1);
+          if (res.data.message == "updated") {
+            setUploadProgress6(100);
+            setFileReady5(1);
           }
         })
-        
+
       } catch (error) {
         console.error("Error uploading file:", error.response?.data || error);
 
@@ -402,113 +402,113 @@ function EditBook() {
       <div className="p-4 rounded-lg ">
         <div className='flex items-center justify-center'>
           <div>
-          <form className=" mx-auto flex gap-4  ">
-            <div className="flex h-[3rem]">
-              <div className='relative'>
-                <ProtectRoute />
-                <label htmlFor="dropdown" className="mb-2 text-sm font-medium text-gray-900 sr-only ">Your Email</label>
-                <button onClick={() => setDropdown(1)} id="dropdown-button" data-dropdown-toggle="dropdown" className=" h-[3rem] flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 outline-none" type="button">{catagory == "" ? "All Catagory" : catagory} <svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
-                </svg>
-
-                </button>
-                <div id="dropdown" className={`z-40 ${dropdown == 1 ? "block" : "hidden"} bg-white left-0 top-0 h-[3rem] divide-y absolute mt-11 divide-gray-100 rounded-lg shadow w-auto `}>
-                  <ul className="py-2 shadow-lg shadow-black overflow-y-scroll h-[40vh] text-sm text-gray-700 w-[10rem] bg-white " >
-                    <li>
-                      <button type="button" onClick={() => { setDropdown(0); setGatagory("") }}
-                        className="inline-flex w-full px-4 py-2 hover:bg-gray-100 ">All</button>
-                    </li>
-                    <li>
-                      <button type="button" onClick={() => { setGatagory("IT"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">IT</button>
-                    </li>
-                    <li>
-                      <button type="button" onClick={() => { setGatagory("constructor"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Constructor</button>
-                    </li>
-                    <li>
-                      <button type="button" onClick={() => { setGatagory("agreculture"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Agreculture</button>
-                    </li>
-                    <li>
-                      <button type="button" onClick={() => { setGatagory("accounting"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Accounting</button>
-                    </li>
-                    <li>
-                      <button type="button" onClick={() => { setGatagory("law"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Law</button>
-                    </li>
-                    <li>
-                      <button type="button" onClick={() => { setGatagory("chinese"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Chinese</button>
-                    </li>
-                    <li>
-                      <button type="button" onClick={() => { setGatagory("english"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">English</button>
-                    </li>
-                    <li>
-                      <button type="button" onClick={() => { setGatagory("general"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">General Knowledg</button>
-                    </li>
-                    <li>
-                      <button type="button" onClick={() => { setGatagory("electric"); setDropdown(false) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Electric</button>
-                    </li>
-                    <li>
-                      <button type="button" onClick={() => { setGatagory("electronic"); setDropdown(false) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Electronic</button>
-                    </li>
-                    <li>
-                      <button type="button" onClick={() => { setGatagory("animal"); setDropdown(false) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Animal husbandry</button>
-                    </li>
-                    <li>
-                      <button type="button" onClick={() => { setGatagory("other"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Other</button>
-                    </li>
-                  </ul>
-                </div>
-
-              </div>
-              <div className='relative'>
-                <label htmlFor="search-dropdown" className="mb-2 text-sm font-medium text-gray-900 sr-only ">Your Email</label>
-                <button onClick={() => setDropdown(2)} id="dropdown-button" data-dropdown-toggle="dropdown" className="h-[3rem] flex-shrink-0 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 hover:bg-gray-200 outline-none" type="button">{language == "" ? "All Language" : language} <svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
-                </svg>
-
-                </button>
-                <div id="dropdown" className={`z-40 ${dropdown == 2 ? "block" : "hidden"} left-0 top-0 bg-white h-[3rem] divide-y absolute mt-11 divide-gray-100 rounded-lg shadow w-auto `}>
-                  <ul className="py-2 shadow-lg shadow-black text-sm text-gray-700 bg-white " >
-                    <li>
-                      <button type="button" onClick={() => { setLanguage(""); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 ">All</button>
-                    </li>
-                    <li>
-                      <button type="button" onClick={() => { setLanguage("foriegn"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 ">Foriegn</button>
-                    </li>
-                    <li>
-                      <button type="button" onClick={() => { setLanguage("khmer"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 ">Khmer</button>
-                    </li>
-
-                  </ul>
-                </div>
-
-              </div>
-              <div className="relative w-full">
-                <input onChange={(event) => { setKeyword(event.target.value); handleSearch(event.target.value); event.target.value != "" ? setDropdown(3) : setDropdown(0) }} autoComplete='off' type="search" id="search-dropdown" className="block p-2.5 xmd:w-full z-20 h-[3rem] text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300  outline-none" placeholder="Search ..." />
-                <button type='button' onClick={handleSearchButton} className="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
-                  <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+            <form className=" mx-auto flex gap-4  ">
+              <div className="flex h-[3rem]">
+                <div className='relative'>
+                  <ProtectRoute />
+                  <label htmlFor="dropdown" className="mb-2 text-sm font-medium text-gray-900 sr-only ">Your Email</label>
+                  <button onClick={() => setDropdown(1)} id="dropdown-button" data-dropdown-toggle="dropdown" className=" h-[3rem] flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 outline-none" type="button">{catagory == "" ? "All Catagory" : catagory} <svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
                   </svg>
-                  <span className="sr-only">Search</span>
-                </button>
-                <div id="dropdown" className={`z-40 ${dropdown == 3 ? "block" : "hidden"} left-0 top-0 bg-white h-[3rem] divide-y absolute mt-11 divide-gray-100 rounded-lg shadow w-[10rem] `}>
-                  <ul className="py-2 text-sm text-gray-700 bg-white " >
 
-                    {result.map((ele, i) =>
-                      <li key={i}>
-                        <button type="button" onClick={() => { setDropdown(0); handleKeyClick(ele.Title) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 ">{ele.Title}</button>
-                      </li>)}
+                  </button>
+                  <div id="dropdown" className={`z-40 ${dropdown == 1 ? "block" : "hidden"} bg-white left-0 top-0 h-[3rem] divide-y absolute mt-11 divide-gray-100 rounded-lg shadow w-auto `}>
+                    <ul className="py-2 shadow-lg shadow-black overflow-y-scroll h-[40vh] text-sm text-gray-700 w-[10rem] bg-white " >
+                      <li>
+                        <button type="button" onClick={() => { setDropdown(0); setGatagory("") }}
+                          className="inline-flex w-full px-4 py-2 hover:bg-gray-100 ">All</button>
+                      </li>
+                      <li>
+                        <button type="button" onClick={() => { setGatagory("IT"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">IT</button>
+                      </li>
+                      <li>
+                        <button type="button" onClick={() => { setGatagory("constructor"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Constructor</button>
+                      </li>
+                      <li>
+                        <button type="button" onClick={() => { setGatagory("agreculture"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Agreculture</button>
+                      </li>
+                      <li>
+                        <button type="button" onClick={() => { setGatagory("accounting"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Accounting</button>
+                      </li>
+                      <li>
+                        <button type="button" onClick={() => { setGatagory("law"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Law</button>
+                      </li>
+                      <li>
+                        <button type="button" onClick={() => { setGatagory("chinese"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Chinese</button>
+                      </li>
+                      <li>
+                        <button type="button" onClick={() => { setGatagory("english"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">English</button>
+                      </li>
+                      <li>
+                        <button type="button" onClick={() => { setGatagory("general"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">General Knowledg</button>
+                      </li>
+                      <li>
+                        <button type="button" onClick={() => { setGatagory("electric"); setDropdown(false) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Electric</button>
+                      </li>
+                      <li>
+                        <button type="button" onClick={() => { setGatagory("electronic"); setDropdown(false) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Electronic</button>
+                      </li>
+                      <li>
+                        <button type="button" onClick={() => { setGatagory("animal"); setDropdown(false) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Animal husbandry</button>
+                      </li>
+                      <li>
+                        <button type="button" onClick={() => { setGatagory("other"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100">Other</button>
+                      </li>
+                    </ul>
+                  </div>
 
-                  </ul>
                 </div>
-                <div className={`fixed w-full h-full top-0 left-0 z-10 ${dropdown == 3 ? "block" : "hidden"}`} onClick={() => setDropdown(0)}></div>
-              </div>
-            </div>
+                <div className='relative'>
+                  <label htmlFor="search-dropdown" className="mb-2 text-sm font-medium text-gray-900 sr-only ">Your Email</label>
+                  <button onClick={() => setDropdown(2)} id="dropdown-button" data-dropdown-toggle="dropdown" className="h-[3rem] flex-shrink-0 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 hover:bg-gray-200 outline-none" type="button">{language == "" ? "All Language" : language} <svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
+                  </svg>
 
-          </form>
-          <br />
-          <div className='gap-4 max-xmd:grid flex items-center justify-center'>
-            <button type='button' onClick={() => setInsertForm(!insertForm)} className='bg-blue-700 h-[3rem] hover:bg-blue-600 duration-100 max-xmd:text-[15px] outline-none px-2 rounded-lg text-white font-[700]'>ADD BOOK</button>
-            <button type='button' onClick={changeTemplate} className='bg-blue-700 h-[3rem] hover:bg-blue-600 duration-100 max-xmd:text-[15px] outline-none px-2 rounded-lg text-white font-[700]'>{template ? "SEE AS LIST" : "SEE AS CARD"}</button>
-          </div>
+                  </button>
+                  <div id="dropdown" className={`z-40 ${dropdown == 2 ? "block" : "hidden"} left-0 top-0 bg-white h-[3rem] divide-y absolute mt-11 divide-gray-100 rounded-lg shadow w-auto `}>
+                    <ul className="py-2 shadow-lg shadow-black text-sm text-gray-700 bg-white " >
+                      <li>
+                        <button type="button" onClick={() => { setLanguage(""); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 ">All</button>
+                      </li>
+                      <li>
+                        <button type="button" onClick={() => { setLanguage("foriegn"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 ">Foriegn</button>
+                      </li>
+                      <li>
+                        <button type="button" onClick={() => { setLanguage("khmer"); setDropdown(0) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 ">Khmer</button>
+                      </li>
+
+                    </ul>
+                  </div>
+
+                </div>
+                <div className="relative w-full">
+                  <input onChange={(event) => { setKeyword(event.target.value); handleSearch(event.target.value); event.target.value != "" ? setDropdown(3) : setDropdown(0) }} autoComplete='off' type="search" id="search-dropdown" className="block p-2.5 xmd:w-full z-20 h-[3rem] text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300  outline-none" placeholder="Search ..." />
+                  <button type='button' onClick={handleSearchButton} className="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
+                    <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                    </svg>
+                    <span className="sr-only">Search</span>
+                  </button>
+                  <div id="dropdown" className={`z-40 ${dropdown == 3 ? "block" : "hidden"} left-0 top-0 bg-white h-[3rem] divide-y absolute mt-11 divide-gray-100 rounded-lg shadow w-[10rem] `}>
+                    <ul className="py-2 text-sm text-gray-700 bg-white " >
+
+                      {result.map((ele, i) =>
+                        <li key={i}>
+                          <button type="button" onClick={() => { setDropdown(0); handleKeyClick(ele.Title) }} className="inline-flex w-full px-4 py-2 hover:bg-gray-100 ">{ele.Title}</button>
+                        </li>)}
+
+                    </ul>
+                  </div>
+                  <div className={`fixed w-full h-full top-0 left-0 z-10 ${dropdown == 3 ? "block" : "hidden"}`} onClick={() => setDropdown(0)}></div>
+                </div>
+              </div>
+
+            </form>
+            <br />
+            <div className='gap-4 max-xmd:grid flex items-center justify-center'>
+              <button type='button' onClick={() => setInsertForm(!insertForm)} className='bg-blue-700 h-[3rem] hover:bg-blue-600 duration-100 max-xmd:text-[15px] outline-none px-2 rounded-lg text-white font-[700]'>ADD BOOK</button>
+              <button type='button' onClick={changeTemplate} className='bg-blue-700 h-[3rem] hover:bg-blue-600 duration-100 max-xmd:text-[15px] outline-none px-2 rounded-lg text-white font-[700]'>{template ? "SEE AS LIST" : "SEE AS CARD"}</button>
+            </div>
           </div>
           <br />
           <br />
@@ -705,9 +705,18 @@ function EditBook() {
                   data.map((ele, i) => <BookCard key={i} read={ele.read_link} view={ele.view} download={ele.download} language={ele.language} type={ele.type} author={ele.autor} publisher={ele.publisher} publish_date={ele.publish_date} id={ele.id} img={ele.img} title={ele.Title} describ={ele.describetion} link={ele.link_download} img1={ele.img_content1} img2={ele.img_content2} img3={ele.img_content3} />)}
             </div>
             :
-            <div className='relative mt-8 max-xmd:overflow-y-scroll w-full'>
-              <BookCardHorizental data={data} />
-            </div>
+            loading ?
+              <div role="status" className={`left-0 h-[100vh] top-0 fixed w-full justify-center items-center flex`}>
+                <svg aria-hidden="true" className="w-8 mx-auto h-8 text-gray-200 animate-spin fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
+                  <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
+                </svg>
+                <span className="sr-only">Loading...</span>
+              </div>
+              :
+              <div className='relative mt-8 max-xmd:overflow-y-scroll w-full'>
+                <BookCardHorizental data={data} />
+              </div>
           }
           <br />
           <button onClick={fetchMoreData} className={` font-[700] text-[20px] text-white bg-blue-700 hover:bg-pink-700 duration-100 hover:shadow-xl hover:shadow-pink-400 w-[10rem] mx-auto rounded-lg ${more ? "block" : "hidden"}`}>More</button>

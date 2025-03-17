@@ -29,36 +29,50 @@ function App() {
           </svg>
         </button>
         <div className={`fixed w-full h-full bg-transparent top-0 z-20 ${sidebar ? "block" : "hidden"}`} onClick={() => setSidebar(!sidebar)}></div>
-        <aside id="default-sidebar" className={`fixed top-0 left-0 z-40 w-64 h-screen ${sidebar ? "translate-x-0" : "-translate-x-full"} duration-200 `}>
-          <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 ">
+        <aside id="default-sidebar" className={`fixed border-r-4 border-r-blue-500 top-0 left-0 z-40 w-64 h-screen ${sidebar ? "translate-x-0" : "-translate-x-full"} duration-200 `}>
+          <div className="h-full px-3 py-4 overflow-y-auto backdrop-blur-lg ">
             <ul className="space-y-2 font-medium">
-              <Link to='/'>
-                <li>
+              <Link to='/' onClick={() => setSidebar(!sidebar)}>
+                <li className="bg-blue-300 rounded-md shadow-lg shadow-gray-800 mb-2">
                   <p className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100">
                     <img className="shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 " src={`https://raw.githubusercontent.com/PisethPanha/ebook_photos/refs/heads/main/drawing.png`} alt="" />
-                    <span className="ms-3">Edit Book</span>
+                    <span 
+                    style={{
+                      textShadow: '0px 0px 10px white'
+                    }}
+                    className="ms-3">Edit Book</span>
                   </p>
                 </li>
               </Link>
 
 
 
-              <Link to="/book-request">
-                <li className=" flex items-center justify-between " >
-                  <a href="" className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+              <Link to="/book-request" onClick={() => setSidebar(!sidebar)}>
+                <li className=" pr-2 flex items-center justify-between bg-blue-300 rounded-md shadow-lg shadow-gray-800 mb-2 " >
+                  <a href="" className="flex gap-2 items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
                     <img src={`https://raw.githubusercontent.com/PisethPanha/ebook_photos/refs/heads/main/pngwing.com%20(17).png`} className="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" alt="" />
-                    <span className="flex-1 ms-3 whitespace-nowrap">User requests</span>
+                    <span 
+                    style={{
+                      textShadow: '20px 20px 10px white'
+                    }}
+                    className="flex-1 ms
+                    -3 whitespace-nowrap">User requests</span>
                   </a>
                   <p className="bg-red-500 p-1 h-[30px] w-[30px] text-center text-white font-[700] rounded-[100%]">{len}</p>
                 </li>
               </Link>
 
 
-              <Link onClick={handleSignOut} to="/login">
-                <li >
-                  <a href="" className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+              <Link onClick={handleSignOut} to="/login" >
+                <li className="bg-blue-300 rounded-md shadow-lg shadow-gray-800" >
+                  <a href="" className="flex gap-2 items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
                     <img src={`https://raw.githubusercontent.com/PisethPanha/ebook_photos/refs/heads/main/logout.png`} className="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" alt="" />
-                    <span className="flex-1 ms-3 whitespace-nowrap">Sign Out</span>
+                    <span 
+                    style={{
+                      textShadow: '20px 20px 10px white'
+                    }}
+                    className="flex-1 ms
+                    -3 whitespace-nowrap">Sign Out</span>
                   </a>
                 </li>
               </Link>
