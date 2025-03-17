@@ -29,7 +29,7 @@ function App() {
           </svg>
         </button>
         <div className={`fixed w-full h-full bg-transparent top-0 z-20 ${sidebar ? "block" : "hidden"}`} onClick={() => setSidebar(!sidebar)}></div>
-        <aside id="default-sidebar" className={`fixed top-0 left-0 z-40 w-64 h-screen ${sidebar ? "max-md:translate-x-0" : "max-md:-translate-x-full"} duration-200 `}>
+        <aside id="default-sidebar" className={`fixed top-0 left-0 z-40 w-64 h-screen ${sidebar ? "translate-x-0" : "-translate-x-full"} duration-200 `}>
           <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 ">
             <ul className="space-y-2 font-medium">
               <Link to='/'>
