@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import BookCardHorizental from '../component/BookCardHorizental';
 import NumRequest from './AppContext';
+import ProtectRoute from '../component/ProtectRoute';
 
 function BookRequest() {
     const [data, setData] = useState([])
@@ -20,6 +21,7 @@ function BookRequest() {
     return (
         
             <div className='relative mt-8 max-xmd:overflow-y-scroll w-full'>
+                <ProtectRoute/>
                 <BookCardHorizental data={data} />
             </div>
         
