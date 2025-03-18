@@ -614,7 +614,7 @@ function EditBook() {
                   <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900 ">
                     Description
                   </h3>
-                  <textarea rows="4" className="block font-[700] text-[20px] p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500  " placeholder="Write your thoughts here..." value={BookDescrib} onChange={(event) => setBookDescrib(event.target.value)}></textarea>
+                  <textarea rows="4" className="block font-[700] text-[20px] p-4 w-[300px] text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500  " placeholder="Write your thoughts here..." value={BookDescrib} onChange={(event) => setBookDescrib(event.target.value)}></textarea>
                   <br />
                   <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900 ">
                     preview images
