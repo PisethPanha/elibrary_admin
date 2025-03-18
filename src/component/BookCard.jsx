@@ -474,7 +474,7 @@ function BookCard({ btnApproval, read, view, download, language, type, id, img, 
               <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900">
                 Description
               </h3>
-              <textarea rows="4" className={`${isUpdated ? "border-4 border-blue-700" : "border-4 border-gray-900"} block font-[700] text-[20px] p-4 w-[300px] text-sm text-gray-900 bg-gray-50 rounded-lg outline-none`} placeholder="Write your thoughts here..." value={BookDescrib} onChange={(event) => setBookDescrib(event.target.value)}></textarea>
+              <textarea rows="4" className={`${isUpdated ? "border-4 border-blue-700" : "border-4 border-gray-900"} block font-[700] text-[20px] p-4 w-[300px] mx-auto text-sm text-gray-900 bg-gray-50 rounded-lg outline-none`} placeholder="Write your thoughts here..." value={BookDescrib} onChange={(event) => setBookDescrib(event.target.value)}></textarea>
               <br />
               <h3 className="uppercase mx-auto text-xl font-semibold text-gray-900">
                 preview images
