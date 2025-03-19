@@ -253,7 +253,7 @@ function EditBook() {
     const sumFileReady1 = fileReady1 + fileReady2 + fileReady3 + fileReady4 + fileReady5
     if (sumFileReady1 == 5) {
       alert("All Done")
-      // navigate(0)
+      navigate(0)
       setLoading(false)
     }
 
