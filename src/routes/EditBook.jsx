@@ -127,11 +127,11 @@ function EditBook() {
           res.data.id && setFileReady1(1);
           setID(res.data.id);
           for (let y = 0; y < 3; y++) {
-            uploadToGitHub(images[y], upStatus[y], res.data.id, y)
+            uploadToGitHub(images[y], upStatus[y], res.data.id + 1, y)
           }
           uploadPDFToGitHub(BookLink, (link) => {
             console.log(link);
-          }, res.data.id)
+          }, res.data.id + 1)
 
 
 
